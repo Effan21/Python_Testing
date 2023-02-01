@@ -22,7 +22,7 @@
             <form action="/purchasePlaces" method="post" class="form-floating">
                 <input type="hidden" name="club" class="form-control" value="{{club['name']}}">
                 <input type="hidden" name="competition" class="form-control" value="{{competition['name']}}">
-                <input type="number" name="places" class="form-control"/>
+                <input type="number" name="places" min="0" max="{{club['points']}}" class="form-control"/>
                 <button type="submit" class="btn btn-light btn-lg">Enter</button>
                 <label class="form-label" style="color:black;" for="places" >How many places?</label>
             </form>
