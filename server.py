@@ -52,13 +52,17 @@ def purchasePlaces():
     if placesRequired is None:
         competition = [c for c in competitions if c['name'] == request.form['competition']][0]
         club = [c for c in clubs if c['name'] == request.form['club']][0]
-        error = 1
-        return render_template('booking.html',club=club,competition=competition,error=error)
+        flash("Indiquez le nombre de places.")
+        return render_template('booking.html',club=club,competition=competition)
     
     try:
         competition = [c for c in competitions if c['name'] == request.form['competition']][0]
         club = [c for c in clubs if c['name'] == request.form['club']][0]
         placesRequired = int(request.form['places'])
+        if placesRequired > 12:
+            flash("Réservation échouée : 12 places maximum peuvent être réservées.")
+            return render_template('booking.html',club=club,competition=competition)
+        
         competition['numberOfPlaces'] = int(competition['numberOfPlaces'])-placesRequired
         club['points'] = int(club['points'])-placesRequired
         todaysDate = datetime.now()
