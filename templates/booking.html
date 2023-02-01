@@ -18,6 +18,15 @@
         
           <main class="px-3 mt-4">
             <h1>{{competition['name']}}</h1>
+            {% with messages = get_flashed_messages()%}
+            {% if messages %}
+                <ul>
+               {% for message in messages %}
+                    <p class="lead" style="color:red;">{{message}}</p>
+                {% endfor %}
+               </ul>
+            {% endif%}
+            {%endwith%}
 
             <form action="/purchasePlaces" method="post" class="form-floating">
                 <input type="hidden" name="club" class="form-control" value="{{club['name']}}">
@@ -26,11 +35,6 @@
                 <button type="submit" class="btn btn-light btn-lg">Enter</button>
                 <label class="form-label" style="color:black;" for="places" >How many places?</label>
             </form>
-            {% if error %}
-            <div class="alert alert-danger" role="alert">
-              Indiquez le nombre de places !
-            </div>
-            {% endif %}
           </main>
         </div>   
              
