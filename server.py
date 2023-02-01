@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from flask import Flask,render_template,request,redirect,flash,url_for
 
 
@@ -28,7 +29,9 @@ def index():
 def showSummary():
     try:
         club = [club for club in clubs if club['email'] == request.form['email']][0]
-        return render_template('welcome.html',club=club,competitions=competitions)
+        todaysDate = datetime.now()
+        todaysDate = todaysDate.strftime("%Y-%m-%d %H:%M:%S")
+        return render_template('welcome.html',club=club,competitions=competitions,todaysDate=todaysDate)
     except IndexError:
         erreur = 1
         return render_template('index.html',erreur=erreur)
@@ -37,12 +40,11 @@ def showSummary():
 def book(competition,club):
     foundClub = [c for c in clubs if c['name'] == club][0]
     foundCompetition = [c for c in competitions if c['name'] == competition][0]
-    if foundClub and foundCompetition:
-        return render_template('booking.html',club=foundClub,competition=foundCompetition)
-    else:
-        flash("Something went wrong-please try again")
-        return render_template('welcome.html', club=club, competitions=competitions)
 
+    dateCompetition=[c["date"] for c in competitions if c['name'] == competition][0]
+    if foundClub and foundCompetition:
+            print(dateCompetition)
+            return render_template('booking.html',club=foundClub,competition=foundCompetition)
 
 @app.route('/purchasePlaces',methods=['POST'])
 def purchasePlaces():
@@ -59,8 +61,10 @@ def purchasePlaces():
         placesRequired = int(request.form['places'])
         competition['numberOfPlaces'] = int(competition['numberOfPlaces'])-placesRequired
         club['points'] = int(club['points'])-placesRequired
+        todaysDate = datetime.now()
+        todaysDate = todaysDate.strftime("%Y-%m-%d %H:%M:%S")
         flash('Great-booking complete!')
-        return render_template('welcome.html', club=club, competitions=competitions)
+        return render_template('welcome.html', club=club, competitions=competitions,todaysDate=todaysDate)
 
     except ValueError: 
         competition = [c for c in competitions if c['name'] == request.form['competition']][0]
