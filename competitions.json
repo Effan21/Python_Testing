@@ -1,14 +1,28 @@
 {
     "competitions": [
         {
+            "name": "Fall Classic",
+            "date": "2023-08-22 13:30:00",
+            "numberOfPlaces": "9",
+            "pictures":"https://getbootstrap.com/docs/5.3/examples/features/unsplash-photo-2.jpg"
+        },
+        {
             "name": "Spring Festival",
-            "date": "2020-03-27 10:00:00",
-            "numberOfPlaces": "25"
+            "date": "2023-03-27 10:00:00",
+            "numberOfPlaces": "25",
+            "pictures":"https://getbootstrap.com/docs/5.3/examples/features/unsplash-photo-3.jpg"
+        },
+        {
+            "name": "Winter Classic",
+            "date": "2022-10-22 13:30:00",
+            "numberOfPlaces": "13",
+            "pictures":"https://getbootstrap.com/docs/5.3/examples/features/unsplash-photo-1.jpg"
         },
         {
             "name": "Fall Classic",
-            "date": "2020-10-22 13:30:00",
-            "numberOfPlaces": "13"
+            "date": "2021-09-22 13:30:00",
+            "numberOfPlaces": "16",
+            "pictures":"https://getbootstrap.com/docs/5.3/examples/features/unsplash-photo-2.jpg"
         }
     ]
 }
