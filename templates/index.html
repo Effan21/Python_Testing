@@ -25,6 +25,9 @@
         
         <button type="submit" class="btn btn-light btn-lg">Enter</button>
     </form>
+    {% if erreur %}
+    <p style="color: red;" class="lead">Email Incorrect</p>
+    {% endif %}
   </main>
 
   <footer class="mt-auto text-white-50">
