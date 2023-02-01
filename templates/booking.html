@@ -1,17 +1,33 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking for {{competition['name']}} || GUDLFT</title>
-</head>
-<body>
-    <h2>{{competition['name']}}</h2>
-    Places available: {{competition['numberOfPlaces']}}
-    <form action="/purchasePlaces" method="post">
-        <input type="hidden" name="club" value="{{club['name']}}">
-        <input type="hidden" name="competition" value="{{competition['name']}}">
-        <label for="places">How many places?</label><input type="number" name="places" id=""/>
-        <button type="submit">Book</button>
-    </form>
-</body>
-</html>
+<html lang="en" class="h-100">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Booking for {{competition['name']}} || GUDLFT</title>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+         <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+         <link href="{{ url_for('static', filename='css/cover-2.css') }}" rel="stylesheet">
+    </head>
+    <body class="d-flex h-100 text-center text-bg-dark">
+    
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+          <header class="mb-4" >
+            <div>
+              <h3 class="float-md-start mb-4">GUDLFT</h3>
+            </div>
+          </header>
+        
+          <main class="px-3 mt-4">
+            <h1>{{competition['name']}}</h1>
+
+            <form action="/purchasePlaces" method="post" class="form-floating">
+                <input type="hidden" name="club" class="form-control" value="{{club['name']}}">
+                <input type="hidden" name="competition" class="form-control" value="{{competition['name']}}">
+                <input type="number" name="places" class="form-control"/>
+                <button type="submit" class="btn btn-light btn-lg">Enter</button>
+                <label class="form-label" style="color:black;" for="places" >How many places?</label>
+            </form>
+          </main>
+        </div>   
+             
+          </body>
+    </html>
