@@ -26,6 +26,11 @@
                 <button type="submit" class="btn btn-light btn-lg">Enter</button>
                 <label class="form-label" style="color:black;" for="places" >How many places?</label>
             </form>
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+              Indiquez le nombre de places !
+            </div>
+            {% endif %}
           </main>
         </div>   
              
