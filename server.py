@@ -34,7 +34,7 @@ def showSummary():
         return render_template('welcome.html',club=club,competitions=competitions,todaysDate=todaysDate)
     except IndexError:
         erreur = 1
-        return render_template('index.html',erreur=erreur)
+        return render_template('index.html',erreur=erreur,clubs=clubs)
 
 @app.route('/book/<competition>/<club>')
 def book(competition,club):
