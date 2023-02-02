@@ -7,8 +7,27 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="{{ url_for('static', filename='css/cover.css') }}" rel="stylesheet">
+    
   </head>
   <body class="d-flex h-100 text-center text-bg-dark">
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
+        <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+          <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-5 fw-semibold">GUDLFT CLUBS</span>
+        </a>
+        <div class="list-group list-group-flush border-bottom scrollarea">
+          {% for c in clubs %}
+          <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong class="mb-1">{{c['name']}}</strong>
+              <small>{{c['points']}} Points</small>
+            </div>
+            <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+          </a>
+          {% endfor %}
+
+        </div>
+      </div>
     
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="mb-auto">
@@ -16,7 +35,7 @@
       <h3 class="float-md-start mb-0">GUDLFT</h3>
     </div>
   </header>
-
+ 
   <main class="px-3">
     <h1>Welcome to the GUDLFT Registration Portal!</h1>
     <p class="lead">Please enter your secretary email to continue:</p>
